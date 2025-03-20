@@ -1,0 +1,81 @@
+/* Default List View */
+.wisor-events-container {
+    width: 100%;
+}
+
+/* Ensure correct layout applies */
+.wisor-events-list ul {
+    list-style: none;
+    padding: 0;
+}
+
+.wisor-events-list li {
+    margin-bottom: 20px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+}
+
+.wisor-events-list h3 {
+    margin: 10px 0;
+}
+
+.wisor-events-list h3 a {
+    text-decoration: none;
+}
+
+/* Grid View */
+.wisor-events-grid ul {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 0; /* Remove default padding */
+    margin: 0; /* Remove default margin */
+    list-style: none; /* Remove default list styling */
+}
+
+.wisor-events-grid li {
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+    display: flex; /* Ensure the content inside the list item is flexible */
+    flex-direction: column; /* Stack content vertically */
+    justify-content: space-between; /* Space out content */
+}
+
+/* Make images responsive */
+.wisor-events-list img, .wisor-events-grid img {
+    max-width: 100%;
+    height: auto;
+    display: block; /* Remove extra space below images */
+}
+
+/* Center text in grid view */
+.wisor-events-grid h3, .wisor-events-grid p {
+    text-align: center;
+    margin: 10px 0; /* Add some margin for better spacing */
+}
+
+/* Optional: Add hover effect for better interactivity */
+.wisor-events-grid li:hover {
+    transform: translateY(-5px);
+    transition: transform 0.3s ease;
+}
+
+
+.load-more-btn {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    background: #0073aa;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+    text-align: center;
+}
+
+.load-more-btn:hover {
+    background: #005177;
+}
