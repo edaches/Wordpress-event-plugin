@@ -26,10 +26,7 @@ To use the **Wisor Events Widget** in Elementor:
 - **Number of Events**: Set how many events to display.
 - **Event Filter**: Choose to show past, future, or all events.
 - **Sort Order**: Display events in ascending or descending order.
-- **Date Range Filter**: Show events within a specific future date range.
-- **Event List Alignment**: Align the entire event list (Left, Center, Right).
-- **Event Content Alignment**: Align event text (Title, Date, Description).
-- **Event Image Alignment**: Align event images separately.
+- **Event Content Alignment**: Align event Content.
 - **Description Length**: Set the character limit for event descriptions.
 - **Layout Style**: Choose between **List View** or **Grid View**.
 
@@ -45,8 +42,7 @@ You can display events anywhere using the shortcode:
 | `filter`       | `future, past, all` (`future`) | Show only upcoming, past, or all events. |
 | `order`        | `ASC, DESC` (`ASC`) | Show oldest or newest events first. |
 | `align_list`   | `left, center, right` (`left`) | Aligns the entire event list. |
-| `align_text`   | `left, center, right` (`left`) | Aligns the event content (title, date, description). |
-| `desc_length`  | `10 - 300` (100) | Sets the maximum character length of the event description. |
+| `desc_length`  | `5 - 300` (100) | Sets the maximum character length of the event description. |
 
 ### **3. Load More Button**
 - The widget includes a **Load More** button to dynamically load additional events.

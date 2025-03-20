@@ -3,8 +3,8 @@
  * Plugin Name: Wisor Events Plugin
  * Description: A custom WordPress plugin to display events using Elementor and shortcodes.
  * Version: 1.0
- * Author: Your Name
- * Author URI: Your Website URL
+ * Author: Austin Edache Abah
+ * Author URI: @adswithed
  * Text Domain: wisor-events-plugin
  */
 
