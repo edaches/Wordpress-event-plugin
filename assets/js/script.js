@@ -24,6 +24,7 @@ jQuery(document).ready(function ($) {
                 paged: page + 1,
                 layout: layout,
                 events_per_page: eventsPerPage,
+                event_description_length: button.attr("data-desc-length") // ✅ Pass the description length
             },
             beforeSend: function () {
                 console.log("Sending AJAX request...");
@@ -33,7 +34,14 @@ jQuery(document).ready(function ($) {
 
                 if (response.success) {
                     let newEvents = $(response.data.html);
-
+                    newEvents.find('.event-content p').each(function () {
+                        let descLength = parseInt(button.attr("data-desc-length")) || 10; // Get the description length
+                        let fullText = $(this).text().trim();
+                        
+                        if (fullText.length > descLength) {
+                            $(this).text(fullText.substring(0, descLength) + "...");
+                        }
+                    });
                     if (eventList.length) {
                         eventList.append(newEvents); // Append inside the existing <ul>
                     } else {

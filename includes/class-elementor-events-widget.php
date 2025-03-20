@@ -292,7 +292,9 @@ class Wisor_Events_Widget extends Widget_Base {
         echo '<button id="load-more-events" class="load-more-btn"
         data-page="1" 
         data-events-per-page="' . esc_attr($events_count) . '" 
-        data-layout="' . esc_attr($layout_class) . '">Load More</button>';
+        data-layout="' . esc_attr($layout_class) . '" 
+        data-desc-length="' . esc_attr($settings['event_description_length']) . '">Load More</button>';
+
 
 
         wp_reset_postdata();
