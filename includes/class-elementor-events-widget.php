@@ -47,6 +47,21 @@ class Wisor_Events_Widget extends Widget_Base {
         );
 
         $this->add_control(
+            'event_filter',
+            [
+                'label'   => __('Event Filter', 'wisor-events-plugin'),
+                'type'    => \Elementor\Controls_Manager::SELECT,
+                'options' => [
+                    'future' => __('Upcoming Events', 'wisor-events-plugin'),
+                    'past'   => __('Past Events', 'wisor-events-plugin'),
+                    'all'    => __('All Events', 'wisor-events-plugin'),
+                ],
+                'default' => 'future',
+            ]
+        );
+        
+
+        $this->add_control(
             'layout_style',
             [
                 'label'   => __('Layout Style', 'wisor-events-plugin'),
@@ -60,6 +75,20 @@ class Wisor_Events_Widget extends Widget_Base {
                 'selectors'    => [
                     '{{WRAPPER}} .wisor-events-container' => 'display: block;',
                 ],
+            ]
+        );
+
+        // Sort Order (Ascending or Descending)
+        $this->add_control(
+            'event_order',
+            [
+                'label'   => __('Sort Order', 'wisor-events-plugin'),
+                'type'    => \Elementor\Controls_Manager::SELECT,
+                'options' => [
+                    'ASC'  => __('Ascending (Oldest First)', 'wisor-events-plugin'),
+                    'DESC' => __('Descending (Newest First)', 'wisor-events-plugin'),
+                ],
+                'default' => 'ASC',
             ]
         );
     
@@ -148,24 +177,32 @@ class Wisor_Events_Widget extends Widget_Base {
         $settings = $this->get_settings_for_display();
         $default_limit = get_option('wisor_events_default_limit', 5);
         $events_count = !empty($settings['events_count']) ? intval($settings['events_count']) : intval($default_limit);
+        $event_filter = !empty($settings['event_filter']) ? $settings['event_filter'] : 'future';
+        $event_order = !empty($settings['event_order']) ? $settings['event_order'] : 'ASC';
+
+        // Define the date condition for filtering
+        $meta_query = [];
 
         // Get layout style (list or grid)
         $layout_class = isset($settings['layout_style']) && $settings['layout_style'] === 'grid' ? 'wisor-events-grid' : 'wisor-events-list';
+
+        if ($event_filter !== 'all') {
+            $date_compare = ($event_filter === 'past') ? '<' : '>=';
+            $meta_query[] = [
+                'key'     => '_event_date',
+                'value'   => date('Y-m-d'),
+                'compare' => $date_compare,
+                'type'    => 'DATE'
+            ];
+        }
 
         $query = new WP_Query([
             'post_type'      => 'events',
             'posts_per_page' => $events_count,
             'meta_key'       => '_event_date',
             'orderby'        => 'meta_value',
-            'order'          => 'ASC',
-            'meta_query'     => [
-                [
-                    'key'     => '_event_date',
-                    'value'   => date('Y-m-d'),
-                    'compare' => '>=',
-                    'type'    => 'DATE'
-                ]
-            ]
+            'order'          => $event_order,
+            'meta_query'     => $meta_query
         ]);
 
         echo '<div class="wisor-events-container ' . esc_attr($layout_class) . '">';
