@@ -1,4 +1,4 @@
-<div class="event-grid-item">
+<li class="event-grid-item">
     <?php $event_date = get_post_meta(get_the_ID(), '_event_date', true); ?>
     <?php $event_link = get_permalink(get_the_ID()); ?>
 
@@ -17,4 +17,4 @@
     
     <!-- Event description -->
     <p><?php the_excerpt(); ?></p>
-</div>
+    </li>
