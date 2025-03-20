@@ -33,7 +33,7 @@ To use the **Wisor Events Widget** in Elementor:
 ### **2. Using Shortcodes**
 You can display events anywhere using the shortcode:
 ```html
-[wisor_events limit="5" filter="future" order="ASC" align_list="center" align_text="left" desc_length="100"]
+[wisor_events limit="5" filter="all" order="ASC" align_text="left" desc_length="100"]
 ```
 #### **Shortcode Attributes**
 | Attribute       | Options (Default) | Description |
