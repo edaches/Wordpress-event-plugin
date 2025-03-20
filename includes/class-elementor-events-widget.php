@@ -159,6 +159,19 @@ class Wisor_Events_Widget extends Widget_Base {
             ]
         );
 
+        $this->add_control(
+            'event_description_length',
+            [
+                'label'   => __('Description Length', 'wisor-events-plugin'),
+                'type'    => \Elementor\Controls_Manager::NUMBER,
+                'min'     => 5,
+                'max'     => 300,
+                'step'    => 10,
+                'default' => 10,
+                'description' => __('Set the maximum number of characters for the event description.', 'wisor-events-plugin'),
+            ]
+        );
+
         // Typography for Date
         $this->add_group_control(
             Group_Control_Typography::get_type(),
@@ -246,6 +259,8 @@ class Wisor_Events_Widget extends Widget_Base {
                 $query->the_post();
                 $event_date = get_post_meta(get_the_ID(), '_event_date', true);
                 $event_link = get_permalink(get_the_ID());
+                $description = get_the_excerpt();
+                $char_limit = isset($settings['event_description_length']) ? intval($settings['event_description_length']) : 100;
 
                 echo '<li>';
                 echo '<div class="event-image">';
@@ -262,7 +277,7 @@ class Wisor_Events_Widget extends Widget_Base {
                 
                 // Event date with a class for styling
                 echo '<p class="event-date"><strong>Date:</strong> ' . esc_html($event_date) . '</p>';
-                echo '<p>' . esc_html(get_the_excerpt()) . '</p>';
+                echo '<p>' . esc_html(wp_trim_words($description, $char_limit, '...')) . '</p>';
                 echo '</div>';
                 echo '</li>';
             }
