@@ -169,6 +169,39 @@ class Wisor_Events_Widget extends Widget_Base {
             ]
         );
 
+        // Event Content Alignment (Aligns content inside each event item)
+        $this->add_control(
+            'event_content_alignment',
+            [
+                'label'   => __('Event Content Alignment', 'wisor-events-plugin'),
+                'type'    => \Elementor\Controls_Manager::CHOOSE,
+                'options' => [
+                    'left'   => [
+                        'title' => __('Left', 'wisor-events-plugin'),
+                        'icon'  => 'eicon-text-align-left',
+                    ],
+                    'center' => [
+                        'title' => __('Center', 'wisor-events-plugin'),
+                        'icon'  => 'eicon-text-align-center',
+                    ],
+                    'right'  => [
+                        'title' => __('Right', 'wisor-events-plugin'),
+                        'icon'  => 'eicon-text-align-right',
+                    ],
+                ],
+                'default' => 'left',
+                'selectors' => [
+                    '{{WRAPPER}} .wisor-events li, 
+                     {{WRAPPER}} .wisor-events .event-grid-item' => 'text-align: {{VALUE}};',
+                     '{{WRAPPER}} .event-content' => 'text-align: {{VALUE}};',
+                     
+                    // Apply alignment to image wrapper so image moves with text
+                    '{{WRAPPER}} .wisor-events .event-image' => 'text-align: {{VALUE}};',
+                ],
+            ]
+        );
+
+
         $this->end_controls_section();
     }
 
@@ -215,21 +248,22 @@ class Wisor_Events_Widget extends Widget_Base {
                 $event_link = get_permalink(get_the_ID());
 
                 echo '<li>';
-
+                echo '<div class="event-image">';
                 // Clickable event image
                 if (has_post_thumbnail()) {
                     echo '<a href="' . esc_url($event_link) . '">';
                     the_post_thumbnail('medium');
                     echo '</a><br>';
                 }
-
+                echo '</div>';
+                echo '<div class="event-content">';
                 // Clickable event title
                 echo '<h3><a href="' . esc_url($event_link) . '">' . esc_html(get_the_title()) . '</a></h3>';
                 
                 // Event date with a class for styling
                 echo '<p class="event-date"><strong>Date:</strong> ' . esc_html($event_date) . '</p>';
                 echo '<p>' . esc_html(get_the_excerpt()) . '</p>';
-
+                echo '</div>';
                 echo '</li>';
             }
             echo '</ul>';

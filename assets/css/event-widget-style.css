@@ -1,6 +1,17 @@
 /* Default List View */
 .wisor-events-container {
-    width: 100%;
+    
+    display: block; /* Ensures proper alignment */
+}
+.wisor-events-container ul {
+    list-style: none;
+    padding: 0;
+}
+
+.wisor-events-container .event-grid-item,
+.wisor-events-container li {
+    display: block;
+    text-align: inherit; /* Allows Elementor setting to override */
 }
 
 /* Ensure correct layout applies */
@@ -78,4 +89,19 @@
 
 .load-more-btn:hover {
     background: #005177;
+}
+
+
+/* Ensure the image aligns dynamically with text */
+.event-image {
+    display: block;
+    text-align: inherit; /* Inherits alignment from parent */
+}
+
+.event-image img {
+    display: inline-block; /* Allows text-align to work */
+}
+
+.event-content {
+    text-align: inherit; /* Follows Elementor setting */
 }
