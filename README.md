@@ -41,7 +41,7 @@ You can display events anywhere using the shortcode:
 | `limit`        | `1 - 20` (5)      | Number of events to show. |
 | `filter`       | `future, past, all` (`future`) | Show only upcoming, past, or all events. |
 | `order`        | `ASC, DESC` (`ASC`) | Show oldest or newest events first. |
-| `align_list`   | `left, center, right` (`left`) | Aligns the entire event list. |
+| `align_text`   | `left, center, right` (`left`) | Aligns the entire event list. |
 | `desc_length`  | `5 - 300` (100) | Sets the maximum character length of the event description. |
 
 ### **3. Load More Button**
@@ -95,7 +95,7 @@ You can display events anywhere using the shortcode:
 - Go to **Elementor > Tools > Regenerate CSS & Data**, then refresh.
 
 ## **Final Notes**
-The Wisor Events Plugin is designed to be **lightweight, customizable, and user-friendly**. We will continue adding features such as **infinite scroll, category filters, and additional layout styles**.
+The Wisor Events Plugin is designed to be **lightweight, customizable, secured, and user-friendly**. I'll will continue adding features such as **infinite scroll, category filters, and additional layout styles**.
 
-🚀 **Thank you for using Wisor Events Plugin!** If you have feedback, reach out via **GitHub Issues** or **WordPress Support Forums**. Happy event managing! 🎉
+🚀 **Thank you for using my Wisor Events Plugin!** If you have feedback, reach out to me via **GitHub Issues** or **WordPress Support Forums**. Happy event managing! 🎉
 
